@@ -9,11 +9,11 @@ def gerar_base_conhecimento():
     
     print("Iniciando a geração da base de conhecimento do Tig...")
 
-    # 1. Textos Explicativos (.md)
+    
     criar_dicionario_financeiro()
     criar_cartilha_seguranca()
 
-    # 2. Dados Estruturados (CSV, JSON, SQLite)
+    
     gerar_dados_transacoes_csv()
     gerar_perfil_usuario_json()
     inicializar_banco_sqlite()
@@ -67,19 +67,19 @@ def gerar_dados_transacoes_csv():
         writer = csv.writer(f)
         writer.writerow(['Data', 'Categoria', 'Tipo', 'Valor'])
         
-        # Gerando dados para os últimos 30 dias
+        
         data_atual = datetime.now()
         for i in range(30):
             data_transacao = (data_atual - timedelta(days=i)).strftime('%Y-%m-%d')
             
-            # 1 a 3 compras por dia
+            
             num_compras = random.randint(1, 3)
             for _ in range(num_compras):
                 categoria = random.choice(categorias_despesa)
                 valor = round(random.uniform(15.50, 250.00), 2)
                 writer.writerow([data_transacao, categoria, 'Despesa', valor])
             
-            # Adicionando um salário no dia 5 (aproximadamente)
+            
             if i == 25:
                  writer.writerow([data_transacao, 'Salário', 'Receita', 3500.00])
                  
@@ -103,11 +103,11 @@ def gerar_perfil_usuario_json():
 
 def inicializar_banco_sqlite():
     """Cria um banco SQLite e uma tabela de controle de orçamentos."""
-    # Usando SQLite para reforçar o foco em modelagem de dados
+    
     conn = sqlite3.connect('tig_dados.db')
     cursor = conn.cursor()
     
-    # Criando tabela de orçamentos mensais
+    
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS orcamento_mensal (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -117,10 +117,10 @@ def inicializar_banco_sqlite():
         )
     ''')
     
-    # Limpando dados antigos se houver
+    
     cursor.execute('DELETE FROM orcamento_mensal')
     
-    # Inserindo dados iniciais
+    
     orcamentos = [
         ('2026-09', 'Alimentação', 800.00),
         ('2026-09', 'Transporte', 300.00),
@@ -133,6 +133,6 @@ def inicializar_banco_sqlite():
     print("- tig_dados.db criado e tabela orcamento_mensal inicializada.")
 
 
-# Executa a função principal
+
 if __name__ == "__main__":
     gerar_base_conhecimento()
