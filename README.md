@@ -67,4 +67,4 @@ O navegador abrirá automaticamente na porta `http://localhost:8501` com o seu a
 ---
 
 ## 👤 Autor
-Desenvolvido por **Tiago Mendes** como parte de projetos práticos de desenvolvimento de software e inteligência artificial.
+Desenvolvido por **Tiago Mendes** como parte de projetos práticos de desenvolvimento de software e inteligência artificial do Bootcamp Bradesco na DIO.
